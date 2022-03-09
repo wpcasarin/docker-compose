@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+  db:
+    container_name: mariadb_container
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: ${ROOT_PASSWORD}
+    networks:
+      mariadb-network:
+        ipv4_address: 172.21.128.1
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${DB_LOCATION}:/var/lib/mysql
+
+networks:
+  mariadb-network:
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16

@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+
+  db:
+    container_name: postgres_container
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+    networks:
+      postgres-network:
+        ipv4_address: 172.20.128.1
+    ports:
+      - "5432:5432"
+    volumes:
+      - ${DB_LOCATION}:/var/lib/postgresql/data
+
+networks:
+  postgres-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
