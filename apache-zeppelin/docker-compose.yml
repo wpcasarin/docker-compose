@@ -3,7 +3,7 @@ version: '3.8'
 services:
   zeppelin:
     container_name: apache_zeppelin
-    image: apache/zeppelin
+    image: apache/zeppelin:0.10.0
     restart: always
     networks:
       zeppelin-network:
@@ -11,10 +11,8 @@ services:
     ports:
       - "10000:8080"
     volumes:
-      - ./zeppelin/logs:/opt/logs
-      - ./zeppelin/notebook:/opt/notebook
-      - ./zeppelin/files:/opt/files
-      - ./zeppelin/conf/interpreter.json:/zeppelin/conf/interpreter.json
+      - ./zeppelin/notebook:/opt/zeppelin/notebook
+      - ./zeppelin/conf:/opt/zeppelin/conf
       
 
 networks:
