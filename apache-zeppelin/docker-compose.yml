@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  zeppelin:
+    container_name: apache_zeppelin
+    image: apache/zeppelin
+    restart: always
+    networks:
+      zeppelin-network:
+        ipv4_address: 172.33.128.1
+    ports:
+      - "10000:8080"
+    volumes:
+      - ./zeppelin/logs:/opt/logs
+      - ./zeppelin/notebook:/opt/notebook
+      - ./zeppelin/files:/opt/files
+      - ./zeppelin/conf/interpreter.json:/zeppelin/conf/interpreter.json
+      
+
+networks:
+  zeppelin-network:
+    ipam:
+      config:
+        - subnet: 172.33.0.0/16
