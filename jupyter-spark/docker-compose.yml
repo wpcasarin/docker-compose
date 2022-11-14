@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: jupyter_spark
+    image: jupyter/pyspark-notebook
+    restart: always
+    networks:
+      docker_network:
+        ipv4_address: 172.16.0.2
+    ports:
+      - '10010:8888'
+      - '10011:4040'
+    volumes:
+      - './work:/home/jovyan/work'
+      
+networks:
+  docker_network:
+    ipam:
+      config:
+        - subnet: 172.16.0.1/16
