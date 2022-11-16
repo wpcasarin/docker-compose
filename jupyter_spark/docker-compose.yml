@@ -6,16 +6,16 @@ services:
     image: jupyter/pyspark-notebook
     restart: always
     networks:
-      docker_network:
+      network:
         ipv4_address: 172.16.0.2
     ports:
       - "10010:8888"
       - "10011:4040"
     volumes:
-      - "/home/welly/code/spark:/home/jovyan/work"
+      - "${WORK_DIR}:/home/jovyan/work"
 
 networks:
-  docker_network:
+  network:
     ipam:
       config:
         - subnet: 172.16.0.1/16
