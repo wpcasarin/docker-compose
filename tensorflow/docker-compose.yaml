@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  jupyter-lab:
+    container_name: tensorflow_jupyterlab
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./work:/work
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
