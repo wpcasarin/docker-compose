@@ -1,6 +1,6 @@
 jupyterlab
-# pandas 
-# matplotlib 
-# mediapipe 
-# scikit-learn 
-# opencv-python
+matplotlib 
+mediapipe
+scikit-learn
+opencv-python
+opencv_jupyter_ui

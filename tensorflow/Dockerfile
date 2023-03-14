@@ -1,8 +1,10 @@
-FROM tensorflow/tensorflow:2.11.0-gpu-jupyter
+FROM tensorflow/tensorflow:2.10.1-gpu-jupyter
 
 WORKDIR /work
 
 COPY requirements.txt requirements.txt
+
+RUN apt-get update && apt-get install libgl1 nodejs -y
 
 RUN pip install -r requirements.txt
 

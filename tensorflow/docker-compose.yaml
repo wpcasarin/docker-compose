@@ -15,3 +15,5 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+    devices:
+      - "/dev/video0:/dev/video0"
